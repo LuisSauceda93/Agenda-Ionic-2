@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Agregar contacto</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="onCrear(contactoForm)" type="submit">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+       </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+
+<ion-img width="100%" height="245" src="./img/image.jpg"></ion-img>
+
+
+
+<div padding>
+  <h6>Cuenta de Google</h6>
+  <p>luigalberto9380@gmail.com</p>
+</div>
+
+<form #contactoForm="ngForm">
+
+ <ion-item>
+    <ion-icon name="person" style="color:gray;font-size:2.2rem;" subtle large item-left></ion-icon>
+    <ion-input  clearInput [(ngModel)]="contacto.nombre" name="nombre"  #nombre="ngModel" spellcheck="false"  required type="text" maxlength="60"  placeholder="Nombre" oninvalid="setCustomValidity('Campo obligatorio')" onchange="try{setCustomValidity('')}catch(e){}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="pin" style="color:gray;font-size:2.2rem;" subtle large item-left></ion-icon>
+    <ion-input clearInput [(ngModel)]="contacto.domicilio" name="domicilio"  #domicilio="ngModel" spellcheck="false" type="text" placeholder="Domicilio"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="call" style="color:gray;font-size:2.2rem;" subtle large item-left></ion-icon>
+    <ion-input clearInput [(ngModel)]="contacto.telefono" name="telefono"  #telefono="ngModel" spellcheck="false"  required  type="tel" oninvalid="setCustomValidity('Solo numeros')" onchange="try{setCustomValidity('')}catch(e){}" title="Solo numeros" maxlength="10" placeholder="Teléfono"  maxlength="10" minlength="10" pattern="[0-9]*"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="mail" style="color:gray;font-size:2.2rem;" subtle large item-left></ion-icon>
+    <ion-input clearInput [(ngModel)]="contacto.correo" name="correo"  #correo="ngModel" spellcheck="false"   oninvalid="setCustomValidity('El formato debe ser mail@ejemplo.com')" onchange="try{setCustomValidity('')}catch(e){}" title="El formato debe ser mail@ejemplo.com" type="email"  maxlength="60"  placeholder="Dirección de correo"></ion-input>
+  </ion-item>
+</form>
+</ion-content>
