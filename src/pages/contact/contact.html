@@ -12,10 +12,10 @@
 
     </ion-refresher-content>
   </ion-refresher>
-  <ion-searchbar (ionInput)="getItems($event)" placeholder="Ingresa nombre"></ion-searchbar>
+  <ion-searchbar cancelButtonText [(ngModel)]="searchQuery" (ionInput)="getItems($event)" placeholder="Ingresa nombre"></ion-searchbar>
   <ion-list>
-    <ion-item-sliding *ngFor="let item of contactos">
-    <button ion-item detail-none>
+    <ion-item-sliding *ngFor="let item of contactos  let i=index;">
+    <button (click)="itemTapped($event,item)" ion-item detail-none>
       <ion-avatar item-left>
         <img src="img/contacto.png">
       </ion-avatar>
@@ -23,7 +23,7 @@
       <p>{{item.telefono}}</p>
     </button>
     <ion-item-options side="right">
-      <button ion-button color="danger">
+      <button (click)="itemTappedEliminar($event,item,i)" ion-button color="danger">
         <ion-icon name="trash"></ion-icon>
         Eliminar
       </button>

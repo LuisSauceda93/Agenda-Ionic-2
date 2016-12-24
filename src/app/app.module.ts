@@ -6,6 +6,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ListarService } from '../pages/servicios/ListarService';
+import { CrearService } from '../pages/servicios/CrearService';
+import { EliminarService } from '../pages/servicios/EliminarService';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,6 @@ import { ListarService } from '../pages/servicios/ListarService';
     HomePage,
     TabsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler, },ListarService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler, },ListarService,CrearService,EliminarService]
 })
 export class AppModule {}

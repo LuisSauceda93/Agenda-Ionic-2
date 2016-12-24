@@ -4,7 +4,7 @@ import { ListarService } from '../servicios/ListarService';
 import { ContactPage } from '../contact/contact';
 import { NavController,ToastController } from 'ionic-angular';
 
-export var lista=[]
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -65,7 +65,7 @@ this.listarService=listarService
 
       if(data.results.estatus == "OK"){
 
-     this.listaContactos()
+    
      this.navCtrl.setRoot(ContactPage)
                let toast = this.toastCtrl.create({
     message: 'Contacto guardado',
@@ -115,21 +115,6 @@ this.listarService=listarService
  }
 
 
- listaContactos(){
 
-    this.listarService.mostrarContactos().subscribe(
-          data => {
-              
-              console.log(data.results);
-             lista = data.results;
-
-                },
-          err =>{
-              console.log(err);
-            
-          }
-          //() => console.log('Verificacion completa')
-         );
-  }
 
 }
