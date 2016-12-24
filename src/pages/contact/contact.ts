@@ -3,7 +3,6 @@ import { NavController,AlertController } from 'ionic-angular';
 import { ListarService } from '../servicios/ListarService';
 import { EliminarService } from '../servicios/EliminarService';
 import { HomePage } from '../home/home';
-import * as lista from "../home/home";
 import {CallNumber} from 'ionic-native';
 
 @Component({
