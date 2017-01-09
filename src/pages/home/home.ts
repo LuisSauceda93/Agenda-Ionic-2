@@ -49,11 +49,10 @@ this.contacto.correo=this.currentUser[0].correo
   }
 
   onCrear(form){
-    let contacto = window.localStorage.getItem('Contacto')
-    console.log(contacto);
+  
     let ret = window.localStorage.getItem('dataUser')
     let currentUser = JSON.parse(ret)
-    console.log(currentUser[0].idContacto);
+    
     
     
     console.log('Presione guardar');
@@ -61,7 +60,7 @@ this.contacto.correo=this.currentUser[0].correo
 
     if(form.valid){
 
-if(contacto==null){
+if(currentUser==null){
 
    this.crearService.crearContacto(this.contacto.nombre,this.contacto.domicilio,this.contacto.telefono,this.contacto.correo).subscribe(
           data => {

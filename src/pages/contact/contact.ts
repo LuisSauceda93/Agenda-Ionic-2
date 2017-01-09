@@ -119,15 +119,11 @@ itemTappedEditar(event,item,index){
 
 let data_user = []
 
-window.localStorage.setItem('Contacto','Editar')
 data_user.push({idContacto:item.idContacto,nombre:item.nombre,domicilio:item.domicilio,telefono:item.telefono,correo:item.correo})
 console.log(data_user);
 
 window.localStorage.setItem('dataUser',JSON.stringify(data_user))
 
-
-
-let contacto = window.localStorage.getItem('Contacto')
 this.navCtrl.push(HomePage)
 
 }
