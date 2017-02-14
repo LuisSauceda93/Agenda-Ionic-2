@@ -1,4 +1,6 @@
 <ion-tabs color="primary">
   <ion-tab [root]="tab3Root" tabTitle="Contactos" tabIcon="contacts"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Llamadas" tabIcon="call"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Llamadas" tabIcon="call">
+    <button (click)="hola()" ion-item detail-none></button>
+    </ion-tab>
 </ion-tabs>

@@ -26,4 +26,15 @@ export class ListarService {
         return this.http.get(url).map(res => res.json());
     }
 
+     mostrarLlamadaNombre(nombre) {
+        this.params= 'contacto/listarLlamada?nombre='+nombre
+        var url = this.serverUrl+ this.params;
+        return this.http.get(url).map(res => res.json());
+    }
+     mostrarLlamada() {
+        this.params= 'contacto/listarLlamada'
+        var url = this.serverUrl+ this.params;
+        return this.http.get(url).map(res => res.json());
+    }
+
 }

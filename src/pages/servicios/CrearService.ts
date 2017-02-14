@@ -22,4 +22,10 @@ export class CrearService {
         var url = this.serverUrl+ this.params;
         return this.http.get(url).map(res => res.json());
     }
+
+     crearLlamada(telefono,nombre) {
+        this.params= 'contacto/crearLlamada?telefono='+telefono+'&nombre='+nombre
+        var url = this.serverUrl+ this.params;
+        return this.http.get(url).map(res => res.json());
+    }
 }

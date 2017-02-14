@@ -6,6 +6,27 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+   <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles" pullingIcon="arrow-dropdown" refreshingText="Actualizando...">
 
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar cancelButtonText [(ngModel)]="searchQuery" (ionInput)="getItems($event)" placeholder="Ingresa nombre"></ion-searchbar>
+ <ion-card *ngFor="let item of llamadas let i=index;">
+
+<ion-list>
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="img/contacto.png">
+    </ion-avatar>
+    <h3>{{item.nombre}}</h3>
+    <p>{{item.fechaCreacion}}</p>
+    <button ion-button clear item-right style="font-size: 1.6rem" (click)="itemTapped($event,item)"><ion-icon ios="ios-call" md="md-call" ></ion-icon></button>
+  </ion-item>
+</ion-list>
+
+
+</ion-card>
 </ion-content>
+

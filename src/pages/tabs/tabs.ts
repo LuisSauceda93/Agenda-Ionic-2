@@ -17,4 +17,9 @@ export class TabsPage {
   constructor() {
 
   }
+
+  hola(){
+    console.log('hola');
+    
+  }
 }
