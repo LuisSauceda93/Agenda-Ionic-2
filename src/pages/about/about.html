@@ -13,9 +13,35 @@
     </ion-refresher-content>
   </ion-refresher>
   <ion-searchbar cancelButtonText [(ngModel)]="searchQuery" (ionInput)="getItems($event)" placeholder="Ingresa nombre"></ion-searchbar>
+
  <ion-card *ngFor="let item of llamadas let i=index;">
 
 <ion-list>
+    <ion-item-sliding>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="img/contacto.png">
+      </ion-avatar>
+      <h2>{{item.nombre}}</h2>
+      <p>{{item.fechaCreacion}}</p>
+      <button (click)="itemTapped($event,item)" ion-button clear item-right style="font-size: 1.6rem">
+      <ion-icon ios="ios-call" md="md-call" ></ion-icon>
+    </button>
+    </ion-item>
+    <ion-item-options side="right">
+      <button (click)="itemTappedEliminar($event,item,i)" ion-button color="danger">
+        <ion-icon name="trash"></ion-icon>
+        Eliminar
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+
+     
+  
+  </ion-list>
+
+<!--<ion-list>
   <ion-item>
     <ion-avatar item-left>
       <img src="img/contacto.png">
@@ -24,7 +50,7 @@
     <p>{{item.fechaCreacion}}</p>
     <button ion-button clear item-right style="font-size: 1.6rem" (click)="itemTapped($event,item)"><ion-icon ios="ios-call" md="md-call" ></ion-icon></button>
   </ion-item>
-</ion-list>
+</ion-list>-->
 
 
 </ion-card>

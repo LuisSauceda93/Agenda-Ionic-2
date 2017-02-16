@@ -21,4 +21,10 @@ export class EliminarService {
         var url = this.serverUrl+ this.params;
         return this.http.get(url).map(res => res.json()); 
     }
+
+    eliminarLlamada(idLlamada){
+       this.params= 'contacto/eliminarLlamada?idLlamada='+idLlamada
+        var url = this.serverUrl+ this.params;
+        return this.http.get(url).map(res => res.json()); 
+    }
 }

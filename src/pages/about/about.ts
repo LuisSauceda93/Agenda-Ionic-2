@@ -3,13 +3,14 @@ import * as call from "../contact/contact";
 import { NavController, AlertController, ToastController } from 'ionic-angular';
 import {CallNumber} from 'ionic-native';
 import { ListarService } from '../servicios/ListarService';
+import { EliminarService } from '../servicios/EliminarService';
 import { CrearService } from '../servicios/CrearService';
 
 
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html',
-  providers:[ListarService]
+  providers:[ListarService,EliminarService]
 })
 export class AboutPage {
 
@@ -17,17 +18,39 @@ export class AboutPage {
   Catalogollamadas = [];
   listarService
   crearService
+  eliminarService
+  searchQuery: string = '';
 
   constructor(public navCtrl: NavController,
               public alertCrtl:AlertController,
               listarService:ListarService,
               crearService:CrearService,
+               eliminarService:EliminarService,
               public toastCtrl: ToastController) {
 
     this.llamadas = call.llamada
     this.listarService=listarService
     this.crearService=crearService
+    this.eliminarService=eliminarService
 
+  }
+
+
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.llamadas= this.Catalogollamadas
+    
+    
+
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.llamadas = this.llamadas.filter((item) => {
+        return (item.nombre.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
   
@@ -69,6 +92,36 @@ CallNumber.callNumber(item.telefono, true)
           }
           //() => console.log('Verificacion completa')
          );
+
+}
+
+
+itemTappedEliminar(event,item,index){
+
+console.log('Index: '+index);
+this.llamadas.splice(index,1);
+
+console.log(item.idLlamada)
+
+this.eliminarService.eliminarLlamada(item.idLlamada).subscribe(
+          data => {
+              
+              console.log(data.results);
+      
+                },
+          err =>{
+              console.log(err);
+          
+              let alert = this.alertCrtl.create({
+                title: "Error de conexión",
+                subTitle:"Ocurrio un problema para realizar la operación, intenta nuevamente<br><small>codigo: "+err.status+"</small>",
+                buttons: [ 'Aceptar']
+            });
+             alert.present();
+          }
+          
+         );
+
 
 }
 
