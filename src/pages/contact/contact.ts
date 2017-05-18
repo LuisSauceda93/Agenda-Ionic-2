@@ -67,6 +67,28 @@ this.listarService.mostrarContactos().subscribe(
        );
 
 
+this.listarService.estados().subscribe(
+       data => {
+  
+        console.log(data.results);
+          
+         
+ if(data.results.length === 0){
+          let alert = this.alertCrtl.create({
+      title: 'Atención!',
+      subTitle: 'No existen solicitudes disponibles',
+      buttons: ['Aceptar']
+    });
+    alert.present();
+        }
+          //console.log(data.results);
+        },
+       err => 
+       console.log(err),
+       
+       () =>  refresher.complete()
+       );
+
 
  }
 

@@ -8,9 +8,12 @@ export class CrearService {
 
       serverUrl;
       params;
+      
     constructor(public http: Http) {
         this.http = http
          this.serverUrl = url.url
+         
+
         
          
 
@@ -28,4 +31,6 @@ export class CrearService {
         var url = this.serverUrl+ this.params;
         return this.http.get(url).map(res => res.json());
     }
+
+     
 }
